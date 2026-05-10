@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">SkyCast</string>
+    <string name="search_city">Search city</string>
+    <string name="search_hint">Search for a city</string>
+    <string name="weather_icon">Weather icon</string>
+    <string name="hourly_forecast">Hourly Forecast</string>
+    <string name="weather_details">Weather Details</string>
+    <string name="five_day_outlook">5-Day Outlook</string>
+    <string name="empty_state_title">Weather needs a location</string>
+    <string name="empty_state_message">Allow location access or search for a city to see the current forecast.</string>
+    <string name="retry">Retry</string>
+    <string name="recent_searches">Recent Searches</string>
+    <string name="back">Back</string>
+    <string name="permission_denied_permanently">Location access is turned off for SkyCast.</string>
+    <string name="open_settings">Open settings</string>
+</resources>

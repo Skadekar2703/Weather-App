@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    app:cardBackgroundColor="@color/sky_card_overlay"
+    app:cardCornerRadius="22dp"
+    app:cardElevation="0dp"
+    app:strokeColor="@color/sky_card_stroke"
+    app:strokeWidth="1dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="18dp">
+
+        <TextView
+            android:id="@+id/dayText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            tools:text="Mon" />
+
+        <ImageView
+            android:id="@+id/dayIcon"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:contentDescription="@string/weather_icon" />
+
+        <TextView
+            android:id="@+id/dayHighLowText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            android:textColor="@android:color/white"
+            tools:text="31° / 24°" />
+
+        <TextView
+            android:id="@+id/dayRainText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            android:textColor="@color/sky_text_secondary"
+            tools:text="40%" />
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

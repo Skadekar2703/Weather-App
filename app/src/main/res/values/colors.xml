@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="sky_blue_500">#3D8BFF</color>
+    <color name="sky_blue_700">#1E5DD8</color>
+    <color name="sky_cloud_500">#587EA5</color>
+    <color name="sky_cloud_700">#324C6B</color>
+    <color name="sky_rain_500">#316AA1</color>
+    <color name="sky_rain_700">#173650</color>
+    <color name="sky_night_500">#12223E</color>
+    <color name="sky_night_700">#050B19</color>
+    <color name="sky_card_overlay">#26FFFFFF</color>
+    <color name="sky_card_stroke">#4DFFFFFF</color>
+    <color name="sky_text_secondary">#DDE8FF</color>
+    <color name="sky_search_background">#101D35</color>
+    <color name="sky_input_background">#1A2E4A</color>
+</resources>
