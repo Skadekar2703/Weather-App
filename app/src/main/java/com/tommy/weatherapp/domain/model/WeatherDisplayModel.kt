@@ -33,6 +33,7 @@ data class HourlyForecastItem(
 data class DailyForecastItem(
     val dayLabel: String,
     val iconUrl: String,
+    val conditionText: String,
     val highLow: String,
     val rainChance: String,
 )

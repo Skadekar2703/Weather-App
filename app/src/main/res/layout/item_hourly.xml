@@ -4,41 +4,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginEnd="12dp"
-    app:cardBackgroundColor="@color/sky_card_overlay"
-    app:cardCornerRadius="22dp"
+    android:layout_marginEnd="14dp"
+    app:cardBackgroundColor="@color/sky_glass_fill"
+    app:cardCornerRadius="24dp"
     app:cardElevation="0dp"
-    app:strokeColor="@color/sky_card_stroke"
+    app:strokeColor="@color/sky_glass_stroke"
     app:strokeWidth="1dp">
 
     <LinearLayout
-        android:layout_width="88dp"
+        android:layout_width="86dp"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="vertical"
-        android:padding="14dp">
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp">
 
         <TextView
             android:id="@+id/hourText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/white"
+            android:textColor="#CCFFFFFF"
+            android:textSize="12sp"
             android:textStyle="bold"
             tools:text="3PM" />
 
         <ImageView
             android:id="@+id/hourIcon"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="10dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="12dp"
             android:contentDescription="@string/weather_icon" />
 
         <TextView
             android:id="@+id/hourTempText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:textColor="@color/sky_text_secondary"
+            android:layout_marginTop="12dp"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
             tools:text="28°" />
     </LinearLayout>
 

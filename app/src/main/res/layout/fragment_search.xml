@@ -1,99 +1,188 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/sky_search_background"
-    android:padding="20dp">
+    android:background="@drawable/bg_search_screen"
+    android:clipToPadding="false"
+    android:fillViewport="true">
 
-    <ImageButton
-        android:id="@+id/backButton"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@drawable/bg_glass_circle"
-        android:contentDescription="@string/back"
-        android:padding="12dp"
-        android:src="@android:drawable/ic_media_previous"
-        android:tint="@android:color/white"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/searchInputLayout"
-        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:hint="@string/search_hint"
-        app:boxBackgroundColor="@color/sky_input_background"
-        app:boxCornerRadiusBottomEnd="22dp"
-        app:boxCornerRadiusBottomStart="22dp"
-        app:boxCornerRadiusTopEnd="22dp"
-        app:boxCornerRadiusTopStart="22dp"
-        app:boxStrokeColor="@color/sky_card_stroke"
-        app:errorEnabled="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/backButton"
-        tools:error="We couldn't find that city.">
+        android:orientation="vertical"
+        android:paddingStart="24dp"
+        android:paddingTop="16dp"
+        android:paddingEnd="24dp"
+        android:paddingBottom="32dp">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/searchEditText"
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            app:cardBackgroundColor="@color/sky_search_fill"
+            app:cardCornerRadius="28dp"
+            app:cardElevation="0dp"
+            app:strokeColor="@color/sky_search_stroke"
+            app:strokeWidth="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp">
+
+                <ImageButton
+                    android:id="@+id/backButton"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="@string/back"
+                    android:padding="8dp"
+                    android:src="@android:drawable/ic_media_previous"
+                    android:tint="#A6D9F7" />
+
+                <EditText
+                    android:id="@+id/searchEditText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:hint="@string/search_hint"
+                    android:imeOptions="actionSearch"
+                    android:inputType="textCapWords"
+                    android:maxLines="1"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:textColor="@android:color/white"
+                    android:textColorHint="#8FB7CE"
+                    android:textSize="18sp"
+                    tools:text="London" />
+
+                <FrameLayout
+                    android:layout_width="40dp"
+                    android:layout_height="40dp">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center"
+                        android:src="@android:drawable/ic_menu_search"
+                        android:tint="@color/sky_primary_accent" />
+
+                    <ProgressBar
+                        android:id="@+id/searchProgress"
+                        style="?android:attr/progressBarStyleSmall"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center"
+                        android:indeterminateTint="@color/sky_primary_accent"
+                        android:visibility="gone" />
+                </FrameLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/searchErrorText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:imeOptions="actionSearch"
-            android:inputType="textCapWords"
-            android:maxLines="1"
+            android:layout_marginTop="8dp"
+            android:textColor="#FFB4AB"
+            android:textSize="13sp"
+            android:visibility="gone"
+            tools:text="We couldn't find that city."
+            tools:visibility="visible" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/recent_searches"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/clearAllButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/clear_all"
+                android:textColor="@color/sky_primary_accent"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recentSearchesRecycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:nestedScrollingEnabled="false"
+            tools:listitem="@layout/item_recent_search" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:text="@string/popular_cities"
             android:textColor="@android:color/white"
-            android:textColorHint="@color/sky_text_secondary"
-            tools:text="Mumbai" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
-    <ProgressBar
-        android:id="@+id/searchProgress"
-        style="?android:attr/progressBarStyleSmall"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_marginEnd="16dp"
-        android:indeterminateTint="@android:color/white"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="@id/searchInputLayout"
-        app:layout_constraintEnd_toEndOf="@id/searchInputLayout"
-        app:layout_constraintTop_toTopOf="@id/searchInputLayout"
-        tools:visibility="visible" />
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/popularChips"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            app:chipSpacingHorizontal="10dp"
+            app:chipSpacingVertical="12dp"
+            app:singleLine="false">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/searchSubmitButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
-        android:text="@string/search_city"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/searchInputLayout" />
+            <com.google.android.material.chip.Chip
+                style="@style/Widget.Material3.Chip.Assist"
+                android:id="@+id/chipLondon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="London" />
 
-    <TextView
-        android:id="@+id/recentSearchesLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:text="@string/recent_searches"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/searchSubmitButton" />
+            <com.google.android.material.chip.Chip
+                style="@style/Widget.Material3.Chip.Assist"
+                android:id="@+id/chipSeoul"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Seoul" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recentSearchesRecycler"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="12dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/recentSearchesLabel"
-        tools:listitem="@layout/item_recent_search" />
+            <com.google.android.material.chip.Chip
+                style="@style/Widget.Material3.Chip.Assist"
+                android:id="@+id/chipSydney"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sydney" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <com.google.android.material.chip.Chip
+                style="@style/Widget.Material3.Chip.Assist"
+                android:id="@+id/chipDubai"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dubai" />
+
+            <com.google.android.material.chip.Chip
+                style="@style/Widget.Material3.Chip.Assist"
+                android:id="@+id/chipBerlin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Berlin" />
+        </com.google.android.material.chip.ChipGroup>
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

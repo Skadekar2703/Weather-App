@@ -72,6 +72,7 @@ object WeatherMapper {
             DailyForecastItem(
                 dayLabel = WeatherFormatters.formatDay(it.dateEpoch),
                 iconUrl = normalizeIcon(it.day.condition.icon),
+                conditionText = it.day.condition.text,
                 highLow = "${WeatherFormatters.formatTemperature(it.day.maxTempC)} / ${WeatherFormatters.formatTemperature(it.day.minTempC)}",
                 rainChance = "${it.day.dailyChanceOfRain}%",
             )

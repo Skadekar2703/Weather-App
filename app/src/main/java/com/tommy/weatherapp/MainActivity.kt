@@ -7,6 +7,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.commit
 import com.tommy.weatherapp.databinding.ActivityMainBinding
+import com.tommy.weatherapp.ui.fragment.ForecastDetailFragment
 import com.tommy.weatherapp.ui.fragment.SearchFragment
 import com.tommy.weatherapp.ui.fragment.WeatherFragment
 
@@ -37,6 +38,14 @@ class MainActivity : AppCompatActivity() {
             setReorderingAllowed(true)
             add(R.id.fragment_container, SearchFragment())
             addToBackStack(SearchFragment::class.java.simpleName)
+        }
+    }
+
+    fun openForecastDetail() {
+        supportFragmentManager.commit {
+            setReorderingAllowed(true)
+            add(R.id.fragment_container, ForecastDetailFragment())
+            addToBackStack(ForecastDetailFragment::class.java.simpleName)
         }
     }
 }

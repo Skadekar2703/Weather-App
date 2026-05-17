@@ -32,8 +32,10 @@ class DailyForecastAdapter : RecyclerView.Adapter<DailyForecastAdapter.DailyView
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: DailyForecastItem) {
             binding.dayText.text = item.dayLabel
+            binding.dayConditionText.visibility = android.view.View.VISIBLE
+            binding.dayConditionText.text = item.conditionText
             binding.dayHighLowText.text = item.highLow
-            binding.dayRainText.text = item.rainChance
+            binding.dayRainText.text = "Rain ${item.rainChance}"
             binding.dayIcon.load(item.iconUrl)
         }
     }

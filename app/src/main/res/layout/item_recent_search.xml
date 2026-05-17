@@ -4,20 +4,64 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="10dp"
-    app:cardBackgroundColor="@color/sky_card_overlay"
-    app:cardCornerRadius="20dp"
+    android:layout_marginBottom="14dp"
+    app:cardBackgroundColor="@color/sky_search_fill"
+    app:cardCornerRadius="24dp"
     app:cardElevation="0dp"
-    app:strokeColor="@color/sky_card_stroke"
+    app:strokeColor="@color/sky_search_stroke"
     app:strokeWidth="1dp">
 
-    <TextView
-        android:id="@+id/recentSearchText"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="18dp"
-        android:textColor="@android:color/white"
-        android:textSize="16sp"
-        tools:text="Bengaluru" />
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="18dp">
+
+        <FrameLayout
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:background="@drawable/bg_recent_location_circle">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:src="@android:drawable/ic_menu_mylocation"
+                android:tint="@color/sky_primary_accent" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/recentSearchText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:text="New York" />
+
+            <TextView
+                android:id="@+id/recentSearchSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/recent_city_subtitle"
+                android:textColor="#9EC0D3"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@android:drawable/ic_media_next"
+            android:tint="#7FA7BC" />
+    </LinearLayout>
 
 </com.google.android.material.card.MaterialCardView>

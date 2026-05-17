@@ -48,9 +48,6 @@ class SearchFragment : Fragment() {
         binding.backButton.setOnClickListener {
             parentFragmentManager.popBackStack()
         }
-        binding.searchSubmitButton.setOnClickListener {
-            submitSearch(binding.searchEditText.text?.toString().orEmpty())
-        }
         binding.searchEditText.setOnEditorActionListener { _, actionId, event ->
             val isSubmit = actionId == EditorInfo.IME_ACTION_SEARCH ||
                 (event?.keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_DOWN)
@@ -61,16 +58,30 @@ class SearchFragment : Fragment() {
         }
         binding.searchEditText.doAfterTextChanged {
             if (!it.isNullOrBlank()) {
-                binding.searchInputLayout.error = null
+                binding.searchErrorText.visibility = View.GONE
                 viewModel.clearSearchError()
             }
+        }
+        binding.clearAllButton.setOnClickListener {
+            binding.searchEditText.text?.clear()
+        }
+
+        listOf(
+            binding.chipLondon,
+            binding.chipSeoul,
+            binding.chipSydney,
+            binding.chipDubai,
+            binding.chipBerlin,
+        ).forEach { chip ->
+            chip.setOnClickListener { submitSearch(chip.text.toString()) }
         }
 
         viewModel.recentSearches.observe(viewLifecycleOwner) {
             recentSearchAdapter.submitList(it)
         }
         viewModel.searchInlineError.observe(viewLifecycleOwner) {
-            binding.searchInputLayout.error = it
+            binding.searchErrorText.text = it
+            binding.searchErrorText.visibility = if (it.isNullOrBlank()) View.GONE else View.VISIBLE
         }
         viewModel.searchSubmitting.observe(viewLifecycleOwner) {
             binding.searchProgress.visibility = if (it) View.VISIBLE else View.GONE
